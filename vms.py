@@ -4,10 +4,24 @@ class Vehicle:
         self._seats = seats
         self._licence = licence
         self._renter = ''
-        self._available = True
+        self._available = False
+        vehicles.append(self)
 
-def display_vehicle():
-    
+    def _display_vehicles(self):
+        print('----------------------')
+        print('Name : {}'.format(self._name))
+        print('Seats : {}'.format(self._seats))
+        print('Licence : {}'.format(self._licence))
+        print('----------------------\n')
+
+vehicles = []
+
+Vehicle('Ford Falcon', 5 , 'GTF724')
+Vehicle('Dodge Challenger', 4 , 'BAT528')
+Vehicle('Subaru WRX', 5 , 'GOX654')
+Vehicle('Toyota Supra', 4 , 'MHQ287')
+Vehicle('Ford Ranger', 5 , 'RAQ812')
+Vehicle('Honda Odyssey', 7 , 'NPQ114')    
 
 
 print("Welcome to BRAD's vehicle rental system")
@@ -23,16 +37,18 @@ while True:
     except:
         print('Please enter an integer. \n Either 1 to rent a vehicle or 2 to return')
 if x == 1:
-    rent_vehicle()
+    counter = 0
+    for v in vehicles:
+        if v._available == True:
+            counter += 1
+            v._display_vehicles()
+    if counter == 0:
+        print('No Vehicles Available ')
+    chosen_vehicle = input('Please enter the licence of your desired vehicle : ')
+    
 elif x == 2:
     return_vehicle()
 
 
 
 
-Vehicle('Ford Falcon', 5 , 'GTF724')
-Vehicle('Dodge Challenger', 4 , 'BAT528')
-Vehicle('Subaru WRX', 5 , 'GOX654')
-Vehicle('Toyota Supra', 4 , 'MHQ287')
-Vehicle('Ford Ranger', 5 , 'RAQ812')
-Vehicle('Honda Odyssey', 7 , 'NPQ114')
