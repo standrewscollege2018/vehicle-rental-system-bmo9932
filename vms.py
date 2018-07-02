@@ -16,8 +16,7 @@ class Vehicle:
 
     def _rent_vehicle(self):
         self._renter = renter_name
-        self._avaiable = False
-        print("Change")
+        self._available = False
 
 vehicles = []
 
@@ -30,9 +29,9 @@ Vehicle('Honda Odyssey', 7 , 'NPQ114', False)
 
 
 print("Welcome to BRAD's vehicle rental system")
-print("Input 1 to rent a vehicle.")
-print("Input 2 to return a vehicle.")
 while True:
+    print("Input 1 to rent a vehicle.")
+    print("Input 2 to return a vehicle.")
     while True:
         try:
             x = int(input(':'))
@@ -51,24 +50,19 @@ while True:
         if counter == 0:
             print('No Vehicles Available ')
         else:
-            while True:
-                try:
-                    chosen_vehicle = input('Please enter the licence of your desired vehicle : ')
-                    counter = 0
-                    for b in vehicles:
-                        if chosen_vehicle in b._licence:
-                            renter_name = input('Please enter your name : ')
-                            b._rent_vehicle()
-                            counter += 1
-                            break
-                    if counter == 0:
-                        print('No Vehicles found')
-                    else:
-                        print("Thanks For renting with BRAD's vehicle rental system")
-                        break
-                except:
-                    print('Error')
-        
+            chosen_vehicle = input('Please enter the licence of your desired vehicle : ')
+            counter = 0
+            for b in vehicles:
+                if chosen_vehicle in b._licence and b._available == True:
+                    renter_name = input('Please enter your name : ')
+                    b._rent_vehicle()
+                    counter += 1
+                    break
+            if counter == 0:
+                print('No Vehicles found')
+            else:
+                print("Thanks For renting with BRAD's vehicle rental system")
+                
     elif x == 2:
         return_vehicle()
 
