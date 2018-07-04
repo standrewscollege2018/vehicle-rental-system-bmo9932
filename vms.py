@@ -47,10 +47,11 @@ print("Welcome to BRAD's vehicle rental system")
 while True:
     print("Input 1 to rent a vehicle.")
     print("Input 2 to return a vehicle.")
+    print("Input 3 to add a new vehicle.")
     while True:
         try:
             x = int(input(':'))
-            if x == 1 or x == 2:
+            if x == 1 or x == 2 or x==3:
                 break
             else:
                 print('Please enter either 1 to rent a vehicle or 2 to return')
@@ -95,5 +96,11 @@ while True:
                     break
             if counter == 0:
                 print('No Vehicles found')
+    elif x == 3:
+        name = input('Name of car : ')
+        seats = input('Number of seats :')
+        licence = input('Licence plate number : ')
+        cost = input('Cost for one day : ')
 
+        Vehicle(name, seats , licence , True, '', cost)
 
